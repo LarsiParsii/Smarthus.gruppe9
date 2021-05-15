@@ -83,9 +83,9 @@ int MeasuredTemp(int ChosenPin) {
   int TMPsensorPin = ChosenPin; //setter pinnen til TMP-sensoren
   pinMode (TMPsensorPin, INPUT);
 
-  int readingFromTemp = analogRead(TMPsensorPin); //Leser verdi fra TMP sensor
-  float Volts = (readingFromTemp * 5.0) / 1023.0; // omdanner verdien til en volt verdi
-  float temp = (Volts - 0.5) * 100; // omdanner verdien fra volt til temperatur i celcius
+  float readingFromTemp = analogReadMilliVolts(TMPsensorPin); //Leser verdi fra TMP sensor
+  float Volts = (readingFromTemp/1000); // omdanner verdien til en volt verdi
+  float temp = (Volts - 0.5) * 100; // om danner verdien fra volt til temperatur i celcius
   return temp;
 }
 
